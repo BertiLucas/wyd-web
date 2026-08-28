@@ -1,9 +1,12 @@
 package com.wydweb.usuario.mapper;
 
 import com.wydweb.usuario.dto.request.UsuarioRequest;
+import com.wydweb.usuario.dto.request.UsuarioUpdateRequest;
 import com.wydweb.usuario.dto.response.UsuarioResponse;
 import com.wydweb.usuario.entity.Usuario;
+import org.springframework.stereotype.Component;
 
+@Component
 public class UsuarioMapper {
 
     public Usuario toEntity(UsuarioRequest request) {
@@ -28,5 +31,15 @@ public class UsuarioMapper {
                 usuario.getStatus(),
                 usuario.getDataCadastro()
         );
+    }
+
+    public void updateEntity(
+            Usuario usuario,
+            UsuarioUpdateRequest request
+    ) {
+        usuario.setNome(request.nome());
+        usuario.setDataNascimento(request.dataNascimento());
+        usuario.setEmail(request.email());
+        usuario.setLogin(request.login());
     }
 }
